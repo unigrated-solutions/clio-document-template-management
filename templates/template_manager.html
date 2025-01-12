@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <div id="upload-container">
+        <form enctype="multipart/form-data">
+            <button id="upload-button" type="button">Upload Token</button>
+            <input type="file" id="token-file" name="token-file" accept=".json" style="display: none;">
+            <p id="upload-message"></p>
+        </form>
+    </div>
+
+    <h1>Template Management</h1>
+    <div class="tabs">
+        <div class="tab active" data-tab="delete">Bulk Deleting</div>
+        <div class="tab" data-tab="download">Bulk Downloading</div>
+        <div class="tab" data-tab="upload">Bulk Uploading</div>
+    </div>
+
+    <!-- Bulk Deleting Content -->
+    <div class="content active" id="delete-content">
+        <div class="container-above-list">
+            <div class="form-group">
+                <label for="search-input">Search Files:</label>
+                <input type="text" id="search-input" placeholder="Search by file name or category">
+            </div>
+            <button class="fetch-files" id="fetch-files-delete">Get Templates (From Clio)</button>
+        </div>
+        <div class="container-list">
+            <ul id="file-list"></ul>
+        </div>
+        <div class="container-below-list">
+            <button id="delete-files" disabled>Delete Selected Files</button>
+        </div>
+    </div>
+
+    <!-- Bulk Downloading Content -->
+    <div class="content" id="download-content">
+        <div class="container-above-list">
+            <div class="form-group">
+                <label for="search-download-input">Search Files:</label>
+                <input type="text" id="search-download-input" placeholder="Search by file name or category">
+            </div>
+            <button class="fetch-files" id="fetch-files-download">Get Templates (From Clio)</button>
+        </div>
+        <div class="container-list">
+            <ul id="download-file-list"></ul>
+        </div>
+        <div class="container-below-list">
+            <div class="form-group">
+                <label for="destination-path">Set Destination Path:</label>
+                <input type="text" id="destination-path" placeholder="Enter destination folder path (optional)">
+            </div>
+            <button id="download-files" disabled>Download Selected Files</button>
+        </div>
+    </div>
+
+    <!-- Bulk Uploading Content -->
+    <div class="content" id="upload-content">
+        <div class="container-above-list">
+            <div class="form-group" style="display: none;">
+                <label for="matter-id">Parent ID:</label>
+                <input type="text" id="matter-id" placeholder="Enter matter ID">
+            </div>
+            <div>
+                <label for="category-input">Category:</label>
+                <input type="text" id="category-input" name="category" placeholder="Optional (TODO)" />
+            </div>
+            <div class="form-group" style="display: none;">
+                <label for="file-type">Select Type:</label>
+                <select id="file-type">
+                    <option value="Document">Document</option>
+                    <option value="Folder">Folder</option>
+                    <option value="Contact">Contact</option>
+                    <option value="Matter">Matter</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="file-input">Select Files:</label>
+                <input type="file" id="file-input" multiple>
+            </div>
+        </div>
+        <div class="container-list">
+            <ul id="upload-list"></ul>
+        </div>
+        <div class="container-below-list">
+            <button id="upload-files" disabled>Upload All Files</button>
+        </div>
+    </div>
+
+    <div id="status-bar" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #007bff; color: white; text-align: center; padding: 10px; display: block;">
+        <span id="status-text">Template Manager</span>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

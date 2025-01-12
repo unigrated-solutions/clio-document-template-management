@@ -1,0 +1,184 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: flex-start; /* Align content vertically */
+    height: 100vh; /* Ensure the body spans the viewport height */
+    box-sizing: border-box; /* Include padding/margin in size calculations */
+    overflow: hidden; /* Prevent page scrolling */
+}
+
+.tabs {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    margin: 5px 1;
+    justify-content: space-around;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #eee;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #ddd;
+    text-align: center;
+    flex: 1;
+    transition: background-color 0.3s;
+}
+
+.tab.active {
+    background-color: #007bff;
+    color: white;
+    border-bottom: none;
+}
+
+.content {
+    display: none; /* Hide content by default */
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 0 0 5px 5px;
+    box-sizing: border-box;
+    height: calc(100vh); /* Constrain content within viewport height */
+    flex-direction: column;
+    overflow: hidden; /* Prevent content from exceeding the container */
+}
+
+.content.active {
+    display: flex; /* Show active content */
+}
+
+.container-above-list {
+    flex-shrink: 0; /* Prevent these containers from resizing */
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+}
+.container-below-list {
+    flex-shrink: 0; /* Prevent resizing */
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    margin-bottom: 20px; /* Adjust this value to create more spacing */
+}
+.container-list {
+    flex-grow: 1; /* Allow this container to fill remaining space */
+    overflow-y: auto; /* Enable scrolling within this container */
+    padding: 2px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* Include padding in size calculations */
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#file-list, #upload-list, #download-file-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow-y: auto; /* Enable scrolling within lists */
+}
+
+#file-list li, #download-file-list li, #upload-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+#file-list li:last-child, #upload-list li:last-child, #download-file-list li:last-child {
+    border-bottom: none;
+}
+
+.form-group {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+.file-item {
+    cursor: pointer;
+}
+
+.form-group label {
+    margin-bottom: 1px;
+    font-weight: bold;
+}
+
+input[type="file"], input[type="text"], button {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#status-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    z-index: 1000; /* Ensure it stays above other content */
+    height: 20px; /* Explicit height for proper layout */
+}
+#upload-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#upload-button:hover {
+    background-color: #0056b3;
+}
+
+#upload-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: green; /* Default to green for success messages */
+}
+
+.no-select {
+    -webkit-user-select: none; /* Safari/Chrome */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE/Edge */
+    user-select: none; /* Standard */
+}
